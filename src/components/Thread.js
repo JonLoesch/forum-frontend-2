@@ -20,6 +20,7 @@ export function Thread(props) {
             id={post.id}
             author={post.author}
             likes={post.likeCount}
+            dislikes={post.dislikeCount}
             myVote={post.myVote}
             refreshThread={props.refreshThread}
           />

@@ -1,8 +1,8 @@
 import React from "react";
-import { like, cancelLike } from "../api";
+import { like, cancelLike, dislike } from "../api";
 
 export function Post(props) {
-  let sum = props.likes;
+  let sum = props.likes - props.dislikes;
 
   return (
     <div className="post">
@@ -21,7 +21,20 @@ export function Post(props) {
           }
         }}
       />
-      {props.likes}
+      <i
+        className={[props.myVote === -1 ? "fas" : "far", "fa-thumbs-down"].join(
+          " "
+        )}
+        onClick={e => {
+          e.preventDefault();
+          if (props.myVote === -1) {
+            cancelLike(props.id).then(props.refreshThread);
+          } else {
+            dislike(props.id).then(props.refreshThread);
+          }
+        }}
+      />
+      {sum}
     </div>
   );
 }

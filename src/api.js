@@ -38,18 +38,30 @@ export function newPost(threadId, content, username) {
   );
 }
 
-export function like(postId){
-  return axios.post(`${uri}/like`, {postId, username: currentUsername()}).then(
-    result => result.data,
-    error => console.log(error)
-  )
+export function like(postId) {
+  return axios
+    .post(`${uri}/like`, { postId, username: currentUsername() })
+    .then(
+      result => result.data,
+      error => console.log(error)
+    );
+}
+export function dislike(postId) {
+  return axios
+    .post(`${uri}/dislike`, { postId, username: currentUsername() })
+    .then(
+      result => result.data,
+      error => console.log(error)
+    );
 }
 
-export function cancelLike(postId){
-  return axios.post(`${uri}/clearLikes`, {postId, username: currentUsername()}).then(
-    result => result.data,
-    error => console.log(error)
-  )
+export function cancelLike(postId) {
+  return axios
+    .post(`${uri}/clearLikes`, { postId, username: currentUsername() })
+    .then(
+      result => result.data,
+      error => console.log(error)
+    );
 }
 
 export const useGlobalLoginState = globalHook(
