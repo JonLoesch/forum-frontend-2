@@ -17,7 +17,11 @@ export function Thread(props) {
         {props.posts.map(post => (
           <Post
             content={post.content}
+            id={post.id}
             author={post.author}
+            likes={post.likeCount}
+            myVote={post.myVote}
+            refreshThread={props.refreshThread}
           />
         ))}
       </div>
